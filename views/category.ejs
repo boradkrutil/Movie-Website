@@ -1,0 +1,35 @@
+<%- include("./component/Layout.ejs", {PathName:"/category"}) %>
+     <div class="div d-flex justify-content-between">
+        <h2>Category</h2>
+        <button class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#open">Add Category</button>
+        <%- include("AddCategory")  %>
+     </div>
+     <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NAME</th>
+                <th scope="col">ALIAS</th>
+                <th scope="col">ACTION</th>
+
+            </tr>
+        </thead>
+        <tbody>
+          <% let i = 0; while (i<data.length) {%>
+            <tr>
+                <th><%= i+1 %></th>
+                <td><%= data[i].name  %></td>
+                <td><%= data[i].alise  %></td>
+                <td>
+                    <button class="btn btn-primary" onclick="ClickEditCategory('<%= data[i]._id %>')">Update</button>
+                    <button  class="btn btn-danger" onclick="DeleteHandler('<%= data[i]._id %>')">Delete</button>
+                </td>
+            </tr>
+          <% i++ } %>
+        </tbody>
+    </table>
+    
+
+ <script src="../public/Assets/js/main.js"></script>
+ <script src="../public/Assets/js/theme.js"></script>

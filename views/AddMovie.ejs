@@ -1,0 +1,70 @@
+<%- include("./component/Layout.ejs", {PathName:"/movie/AddMovie"}) %>
+
+
+  <%- include("./component/movieModel") %>
+
+    <div class="div d-flex justify-content-between">
+      <h2>Add Movie</h2>
+    </div>
+    <hr>
+
+    <div class="row">
+      <div class="col-lg-4 col-12 mb-2 ">
+        <input type="text" name="title" id="title" , placeholder="Title">
+        <span id="titleError"></span>
+      </div>
+      <div class="col-lg-4 col-12 mb-2 ">
+        <input type="text" name="alise" id="alise" , placeholder="Alias">
+        <span id="aliseError"></span>
+      </div>
+      <div class="col-lg-4 col-12 mb-2 select">
+        <select id="category" class="form-select" aria-label="Default select example">
+          <option selected value="0" id="Select"> --select category--</option>
+          <% let i=0; while (i<category.length) {%>
+            <option value="<%= category[i]._id %>">
+              <%= category[i].name %>
+            </option>
+            <%i++} %>
+
+        </select>
+        <span id="CatError"></span>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-12">
+          <div class="col-12 mb-2">
+            <textarea name="Description" id="textarea" class="w-100" placeholder="Description"
+              style="padding: 0.5rem 1rem;"></textarea>
+          </div>
+        </div>
+        <div class="col-lg-4 col-12">
+          <div class="col-12 mb-2">
+            <div class="fetureImage">
+
+            </div>
+            <span id="ImgError"></span>
+            <button type="button" class="btn btn-primary w-100 mt-2" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">
+              Select Feture Image
+            </button>
+          </div>
+
+          <div class=" col-12 mb-2">
+            <textarea type="text" name="headerScript" id="headerScript" rows="7" placeholder="Header script"></textarea>
+          </div>
+          <div class=" col-12 mb-2">
+            <textarea type="text" name="bodyScript" id="bodyScript" rows="7" placeholder="Body script"></textarea>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="col-12 mb-2 ">
+        <button class="btn btn-success float-end" style="padding: 0.8rem 2rem;" onclick="AddMovie()">Submit</button>
+      </div>
+    </div>
+
+
+
+
+    <script src="../public/Assets/js/main.js"></script>
+    <script src="../public/Assets/js/theme.js"></script>

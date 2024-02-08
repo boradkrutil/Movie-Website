@@ -1,0 +1,57 @@
+<%- include("./component/Layout.ejs", {PathName:"/movie"}) %>
+<style>
+  a{
+    list-style: none;
+    color: white;
+    text-decoration: none;
+  }
+  a:hover{
+    color: white;
+  }
+</style>
+
+<div class="div d-flex justify-content-between">
+  <h2>Movie List</h2>
+  <button class="btn btn-success"><a href="/movie/AddMovie">Add Movie</a></button>
+  <%- include("AddCategory")  %>
+</div>
+<hr>
+<table class="table">
+  <thead>
+      <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Title</th>
+          <th scope="col">View</th>
+          <th scope="col">ALIAS</th>
+          <th scope="col">Category</th>
+          <th scope="col">FeatureImage</th>
+          <th scope="col">Action</th>
+
+
+
+
+
+
+      </tr>
+  </thead>
+  <tbody>
+    <% let i = 0; while (i<data.length) {%>
+      <tr>
+          <th><%= i+1  %></th>
+          <td><%= data[i].title  %></td>
+          <td class="text-center"><a href=http://localhost:5000/moviedetail/<%=data[i]._id  %> style="color: black;"><i class="fa-solid fa-eye"></i></a></td>
+          <td><%= data[i].alias %></td>
+          <td><%= data[i].category.name  %></td>
+          <td class="text-center" ><img src="<%= data[i].fetureImage.path %>" alt="" height="60px" width="60px"></td>
+         
+          <td  class="text-center" >
+              <button class="btn btn-primary" onclick="ClickEditMovie('<%= data[i]._id %>')">Update</button>
+              <button  class="btn btn-danger" onclick="DeleteMovie('<%= data[i]._id %>')">Delete</button>
+          </td>
+      </tr>
+    <% i++ } %>
+  </tbody>
+</table>
+
+
+<script src="../public/Assets/js/main.js"></script>

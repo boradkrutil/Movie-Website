@@ -1,0 +1,64 @@
+<%- include("./component/Layout.ejs", {PathName:"/movie"}) %>
+
+<%- include("./component/movieModel")  %>
+
+<div class="div d-flex justify-content-between">
+    <h2>Add Movie</h2>
+  </div>
+  <hr>
+
+
+  <div class="row">
+    <div class="col-lg-4 col-12 mb-2 ">
+      <input type="text" name="title" id="title" value="<%= title  %>" , placeholder="Title">
+      <span id="titleError"></span>
+    </div>
+    <div class="col-lg-4 col-12 mb-2 ">
+      <input type="text" name="alise" id="alise" value="<%= alias  %>" placeholder="Alias" >
+      <span id="aliseError"></span>
+    </div>
+    <div class="col-lg-4 col-12 mb-2 select">
+      <select id="category" class="form-select"  aria-label="Default select example">
+        <option selected value="<%= category._id  %>" id="Select"><%= category.name  %></option>
+        <% let i =0; while (i<categorys.length) {%>
+            <option value="<%= categorys[i]._id  %>"><%= categorys[i].name  %></option>
+            
+        <%i++} %>
+        
+      </select>
+      <span id="CatError"></span>
+    </div>
+    <div class="row">
+      <div class="col-lg-8 col-12">
+      <div class="col-12 mb-2">
+        <textarea name="Description" id="textarea" class="w-100"  placeholder="Description"
+          style="padding: 0.5rem 1rem;"><%= description %></textarea>
+      </div></div>
+      <div class="col-lg-4 col-12">
+        <div class="col-12 mb-2">
+          <div class="fetureImage">
+            <img src="<%= fetureImage.path%>" alt="" height="100%", width="100%">
+          </div>
+          <span id="ImgError"></span>
+          <button type="button" class="btn btn-primary w-100 mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Select Feture Image
+          </button>
+        </div>
+    
+        <div class=" col-12 mb-2">
+          <textarea type="text" name="headerScript" id="headerScript" rows="7" placeholder="Header script"><%= headerScript  %></textarea>
+        </div>
+        <div class=" col-12 mb-2">
+          <textarea type="text" name="bodyScript" id="bodyScript" rows="7" placeholder="Body script"><%= bodyScript  %></textarea>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="col-12 mb-2 ">
+      <button class="btn btn-success float-end" style="padding: 0.8rem 2rem;" onclick="UpdateMovie()" >Submit</button>
+    </div>
+  </div>
+
+  <script src="../public/Assets/js/main.js"></script>
+  <script src="../public/Assets/js/theme.js"></script>

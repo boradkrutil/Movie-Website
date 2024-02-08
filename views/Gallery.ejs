@@ -1,0 +1,185 @@
+<%- include("./component/Layout.ejs", {PathName:"/gallery"}) %>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #333;
+    font-size: 13px;
+    background: #f4f4f4;
+    font-family: sans-serif;
+    overflow:auto;
+}
+
+.container {
+    width: 90%;
+    max-width: 960px;
+    margin: 30px auto;
+    position: relative;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+   
+}
+
+nav {
+    display: block;
+    width: 100%;
+}
+
+ul {
+   list-style: none; 
+   margin-bottom: 20px;
+}
+
+nav > ul > li {
+    display: inline-block;
+}
+nav > ul > li > a {
+    text-transform: uppercase;
+    padding: 4px 10px;
+    margin-right: 2px;
+    margin-left: 2px;
+    text-decoration: none;
+    color: #27A4DD;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 25px;
+    border: 1px solid #27A4DD;
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
+}
+
+.hidden {
+    display: none;
+}
+
+nav > ul > li > a:hover, .current a {
+    color: #fff;
+    background-color: #27A4DD;
+}
+
+#projects > ul > li {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    width: 23%;
+    height: auto;
+    cursor: pointer;
+    border-radius: 5px;
+    box-sizing: border-box;
+    position: relative;
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
+}
+
+img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.gallery {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    padding: 40px 10px;
+    display: none;
+    box-sizing: border-box;
+}
+
+.gallery > img {
+    max-height: 100%;
+    width: auto;
+}
+
+.close i {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    height: 30px;
+    width: 30px;
+}
+
+.bar {
+    display: block;
+    position: absolute;
+    top: 13px;
+    float: left;
+    width: 30px;
+    border-bottom: 4px solid #fff;
+    transform: rotate(45deg);
+}
+
+.bar:first-child {
+    transform: rotate(-45deg);
+}
+
+@media (max-width: 768px){
+    #projects > ul > li {
+        width: 48%;
+    }
+    .del{
+        text-align: left !important;
+        padding: 0px 0px;
+        margin: 10px 12px;
+        font-size: medium;
+    }
+
+}
+
+@media (max-width: 568px) {
+    #projects > ul > li {
+        width: 100%;
+    }
+}
+</style>
+
+
+
+
+
+    <div class="container-fluid">
+        <div id="projects">
+            <h1 class="heading">Gallery</h1>
+            <div class="row d-flex justify-content-between">
+                <div class="col-12 col-md-6 ">
+                    <label for="file" style="border: 1px dashed gray; display: flex; align-items: center; justify-content: between; height: 200px; width: 200px;">
+                        <img src="https://t4.ftcdn.net/jpg/02/83/72/41/360_F_283724163_kIWm6DfeFN0zhm8Pc0xelROcxxbAiEFI.jpg" style="height: 198px;" >
+                        <input onchange="UploadFile(this.files[0])" type="file" id="file" hidden>
+                    </label>
+                </div>
+                <div class="col-12 col-md-6 del" style="text-align: right;">             
+                       <button class="btn btn-danger " style="padding: 1rem 2rem; font-size: 20px;" onclick="DeleteFile()">Delete</button>
+                </div>
+            </div>
+            <ul id="gallery">
+                <% let i = 0; while (i<files.length) {%>
+                    <li class="design"><a href="#"></a><img onclick="SelectFile(this)" src="<%=files[i].path%>" id="<%= files[i]._id  %>"></a></li>
+                <%i++} %>
+            </ul>
+            </nav>
+        </div>
+        <!-- modal gallery -->
+        <div class="gallery">
+            <a class="close" href="#">
+                <i>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                </i>
+            </a>
+            <img src="">
+        </div>
+    </div>
+
+<script src="../public/Assets/js/theme.js"></script>
+<script src="../public/Assets/js/main.js"></script>

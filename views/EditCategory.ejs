@@ -1,0 +1,24 @@
+<%- include("./component/Layout.ejs", {PathName:"/category"}) %>
+
+<div class="div d-flex justify-content-between">
+    <h2>Update Category</h2>
+ </div>
+ <hr>
+
+ <div class="row">
+    <div class="col-lg-5 col-12 mb-2">
+        <input type="text" name="name" id="name", placeholder="Name" value="<%= name  %>">
+    </div>
+    <div class="col-lg-5 col-12 mb-2">
+        <input type="text" name="alise" id="alise", placeholder="Alise" value="<%= alise  %>">
+    </div>
+    <div class="col-lg-2 col-12 mb-2">
+        <button class="btn btn-success" onclick="UpdateCategory()">Submit</button>
+    </div>
+ </div>
+
+
+
+
+<script src="../public/Assets/js/main.js"></script>
+<script src="../public/Assets/js/theme.js"></script>
